@@ -1,1 +1,59 @@
-<html></html>
+<html>
+	<head>
+		<!-- <link rel="icon" type="image/x-icon" href="img/favicon.jpg" /> -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Lato"
+			rel="stylesheet"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<script type="text/javascript" src="words.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<title>Value Survey</title>
+		<style>
+			body {
+				font-family: Lato;
+			}
+
+			#words-container {
+				display: flex;
+				width: 600px;
+				margin-top: 20px;
+			}
+
+			.word {
+				margin-left: 12px;
+				margin-right: 12px;
+				border-width: 2px;
+				border-color: black;
+				border-style: solid;
+				border-radius: 12px;
+				width: 400px;
+				height: 60px;
+				text-align: center;
+				padding-top: 12px;
+				font-size: 32px;
+				background-color: lightskyblue;
+			}
+
+			.word:hover {
+				cursor: pointer;
+				background-color: darkblue;
+				color: white;
+			}
+		</style>
+	</head>
+	<body onLoad="load()">
+		<div id="header"></div>
+		<div id="body">
+			<div id="player-name-container">
+				Player: <input id="player-name" placeholder="Your name here" />
+				<hr />
+			</div>
+			<div id="words-container">
+				<div class="word" id="left-word"></div>
+				<div class="word" id="right-word"></div>
+			</div>
+		</div>
+	</body>
+</html>
