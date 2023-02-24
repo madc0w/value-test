@@ -28,7 +28,7 @@
 				border-color: black;
 				border-style: solid;
 				border-radius: 12px;
-				width: 400px;
+				width: 720px;
 				height: 60px;
 				text-align: center;
 				padding-top: 12px;
@@ -37,6 +37,28 @@
 			}
 
 			.word:hover {
+				cursor: pointer;
+				background-color: darkblue;
+				color: white;
+			}
+
+			#player-name-container {
+				display: flex;
+			}
+
+			#reset-button {
+				font-weight: bold;
+				margin-left: 12px;
+				width: 120px;
+				border-color: black;
+				border-style: solid;
+				border-radius: 4px;
+				border-width: 1px;
+				text-align: center;
+				background-color: lightskyblue;
+			}
+
+			#reset-button:hover {
 				cursor: pointer;
 				background-color: darkblue;
 				color: white;
@@ -53,6 +75,10 @@
 			#other-results-container {
 				width: 200px;
 			}
+
+			.result-header {
+				font-weight: bold;
+			}
 		</style>
 	</head>
 	<body onLoad="load()">
@@ -61,6 +87,7 @@
 			<div id="player-name-container">
 				Your name:
 				<input id="player-name" placeholder="Your name here" maxlength="40" />
+				<div id="reset-button" onClick="reset()">Reset</div>
 				<hr />
 			</div>
 			<div id="words-container">
@@ -70,20 +97,22 @@
 			</div>
 			<hr />
 			<div id="result-container">
-				<div id="user-results-container">
+				<div id="user-results-container" class="result-header">
 					Your values:
 					<div id="user-results"></div>
 				</div>
 				<div id="other-results-container">
-					Other player:
-					<select
-						id="other-player-select"
-						onChange="setOtherUserResults()"
-					></select>
+					<div class="result-header">
+						Other player:
+						<select
+							id="other-player-select"
+							onChange="setOtherUserResults()"
+						></select>
+					</div>
 					<div id="other-user-results"></div>
 				</div>
 				<div id="player-score-correspondence-container">
-					<div>Correspondence</div>
+					<div class="result-header">Correspondence</div>
 					<div id="player-score-correspondence"></div>
 				</div>
 			</div>

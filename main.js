@@ -121,3 +121,11 @@ function setOtherUserResults() {
 	const username = document.getElementById('other-player-select').value;
 	refreshResults(username);
 }
+
+function reset() {
+	if (localStorage.valuesPlayerName) {
+		delete localStorage[`${localStorage.valuesPlayerName}-values-results`];
+		refreshResults();
+		document.getElementById('player-score-correspondence').innerHTML = '';
+	}
+}
