@@ -85,6 +85,32 @@ function refreshResults(playerName) {
 			? 'user-results'
 			: 'other-user-results'
 	).innerHTML = html;
+
+	const otherUsername = document.getElementById('other-player-select').value;
+	if (otherUsername) {
+		const otherResults = getResults(otherUsername);
+		const userResults = getResults(localStorage.valuesPlayerName);
+
+		let sum = 0,
+			n = 0;
+		for (const word of Object.keys(userResults)) {
+			if (otherResults[word] != null) {
+				// console.log(word);
+				const score = Math.round(
+					userResults[word].wins / userResults[word].rounds
+				);
+				const otherScore = Math.round(
+					otherResults[word].wins / otherResults[word].rounds
+				);
+				sum += Math.abs(score - otherScore);
+				n++;
+			}
+		}
+		if (n > 0) {
+			document.getElementById('player-score-correspondence').innerHTML =
+				Math.round(100 * (1 - sum / n)) + ' / 100';
+		}
+	}
 }
 
 function getResults(playerName) {

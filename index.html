@@ -49,16 +49,22 @@
 			#user-results-container {
 				width: 200px;
 			}
+
+			#other-results-container {
+				width: 200px;
+			}
 		</style>
 	</head>
 	<body onLoad="load()">
 		<div id="header"></div>
 		<div id="body">
 			<div id="player-name-container">
-				Player: <input id="player-name" placeholder="Your name here" />
+				Your name:
+				<input id="player-name" placeholder="Your name here" maxlength="40" />
 				<hr />
 			</div>
 			<div id="words-container">
+				Click the word that best suits your personal values.
 				<div class="word" id="left-word"></div>
 				<div class="word" id="right-word"></div>
 			</div>
@@ -75,6 +81,10 @@
 						onChange="setOtherUserResults()"
 					></select>
 					<div id="other-user-results"></div>
+				</div>
+				<div id="player-score-correspondence-container">
+					<div>Correspondence</div>
+					<div id="player-score-correspondence"></div>
 				</div>
 			</div>
 		</div>
