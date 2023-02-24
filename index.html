@@ -41,6 +41,14 @@
 				background-color: darkblue;
 				color: white;
 			}
+
+			#result-container {
+				display: flex;
+			}
+
+			#user-results-container {
+				width: 200px;
+			}
 		</style>
 	</head>
 	<body onLoad="load()">
@@ -53,6 +61,21 @@
 			<div id="words-container">
 				<div class="word" id="left-word"></div>
 				<div class="word" id="right-word"></div>
+			</div>
+			<hr />
+			<div id="result-container">
+				<div id="user-results-container">
+					Your values:
+					<div id="user-results"></div>
+				</div>
+				<div id="other-results-container">
+					Other player:
+					<select
+						id="other-player-select"
+						onChange="setOtherUserResults()"
+					></select>
+					<div id="other-user-results"></div>
+				</div>
 			</div>
 		</div>
 	</body>
