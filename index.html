@@ -22,6 +22,7 @@
 			}
 
 			.word {
+				user-select: none;
 				margin-left: 12px;
 				margin-right: 12px;
 				border-width: 2px;
@@ -73,11 +74,16 @@
 			}
 
 			#other-results-container {
-				width: 200px;
+				width: 300px;
 			}
 
 			.result-header {
 				font-weight: bold;
+			}
+
+			td.word-match {
+				background-color: lightblue;
+				border-radius: 4px;
 			}
 		</style>
 	</head>
@@ -106,7 +112,7 @@
 						Other player:
 						<select
 							id="other-player-select"
-							onChange="setOtherUserResults()"
+							onClick="setOtherUserResults()"
 						></select>
 					</div>
 					<div id="other-user-results"></div>

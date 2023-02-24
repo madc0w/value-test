@@ -9,7 +9,7 @@ function load() {
 		refreshResults();
 	}
 
-	let options = '';
+	let options = `<option disabled>Select another user</option>`;
 	for (const usernameKey of Object.keys(localStorage).filter(
 		(key) =>
 			key.endsWith('-values-results') &&
@@ -55,6 +55,7 @@ function wordClick(el) {
 		localStorage[`${playerName}-values-results`] = JSON.stringify(results);
 
 		refreshResults();
+		setOtherUserResults();
 		setWords();
 	} else {
 		document.getElementById('player-name').focus();
@@ -63,7 +64,9 @@ function wordClick(el) {
 
 function refreshResults(playerName) {
 	playerName = playerName || localStorage.valuesPlayerName;
+	const isCurrentUser = playerName == localStorage.valuesPlayerName;
 	const results = getResults(playerName);
+	const userResults = getResults(localStorage.valuesPlayerName);
 	let html = '<table>';
 	html += '<tr><th>Word</th><th>Score</th></tr>';
 	const sortedWords = Object.keys(results).sort((a, b) => {
@@ -77,19 +80,25 @@ function refreshResults(playerName) {
 	});
 	for (const word of sortedWords) {
 		const score = Math.round((100 * results[word].wins) / results[word].rounds);
-		html += `<tr><td>${word}</td><td>${score}</td></tr>`;
+		let wordClass = '',
+			currentUserScore = '';
+		if (!isCurrentUser && userResults[word]) {
+			wordClass = 'word-match';
+			currentUserScore =
+				' (' +
+				Math.round((100 * userResults[word].wins) / userResults[word].rounds) +
+				')';
+		}
+		html += `<tr><td class="${wordClass}">${word}</td><td>${score} ${currentUserScore}</td></tr>`;
 	}
 	html += '</table>';
 	document.getElementById(
-		playerName == localStorage.valuesPlayerName
-			? 'user-results'
-			: 'other-user-results'
+		isCurrentUser ? 'user-results' : 'other-user-results'
 	).innerHTML = html;
 
 	const otherUsername = document.getElementById('other-player-select').value;
 	if (otherUsername) {
 		const otherResults = getResults(otherUsername);
-		const userResults = getResults(localStorage.valuesPlayerName);
 
 		let sum = 0,
 			n = 0;
@@ -108,7 +117,8 @@ function refreshResults(playerName) {
 		}
 		if (n > 0) {
 			document.getElementById('player-score-correspondence').innerHTML =
-				Math.round(100 * (1 - sum / n)) + ' / 100';
+				Math.round(100 * (1 - sum / n)) +
+				` / 100 (with ${n} word${n > 1 ? 's' : ''} in common)`;
 		}
 	}
 }
@@ -119,7 +129,9 @@ function getResults(playerName) {
 
 function setOtherUserResults() {
 	const username = document.getElementById('other-player-select').value;
-	refreshResults(username);
+	if (username) {
+		refreshResults(username);
+	}
 }
 
 function reset() {
