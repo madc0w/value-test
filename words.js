@@ -1,3 +1,5 @@
+// ONLY ADD WORDS AT THE END OF THIS LIST because indexing is static!
+
 const words = [
 	'adventure',
 	'altruism',

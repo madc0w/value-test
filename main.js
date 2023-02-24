@@ -28,11 +28,24 @@ function load() {
 function setWords() {
 	const word1 = words[Math.floor(Math.random() * words.length)];
 	document.getElementById('left-word').innerHTML = word1;
-	let word2;
+	const wordMatches = JSON.parse(localStorage.wordMatches || '{}');
+	wordMatches[word1] = wordMatches[word1] || [];
+	const numMatches = wordMatches[word1].length;
+	const word2Index = Math.floor(
+		Math.random() * (words.length - numMatches - 1)
+	);
+	let word2,
+		i = 0,
+		j = 0;
 	do {
-		word2 = words[Math.floor(Math.random() * words.length)];
-	} while (word1 == word2);
+		word2 = words[i++];
+		if (!wordMatches[word1].includes(word2) && word2 != word1) {
+			j++;
+		}
+	} while (j < word2Index);
 	document.getElementById('right-word').innerHTML = word2;
+	wordMatches[word1].push(word2);
+	localStorage.wordMatches = JSON.stringify(wordMatches);
 }
 
 function wordClick(el) {
