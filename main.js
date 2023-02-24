@@ -28,8 +28,10 @@ function load() {
 function setWords() {
 	const word1 = words[Math.floor(Math.random() * words.length)];
 	document.getElementById('left-word').innerHTML = word1;
-	const word2 = words[Math.floor(Math.random() * words.length)];
-	document.getElementById('right-word').innerHTML = word2;
+	do {
+		const word2 = words[Math.floor(Math.random() * words.length)];
+		document.getElementById('right-word').innerHTML = word2;
+	} while (word1 == word2);
 }
 
 function wordClick(el) {
