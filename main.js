@@ -26,11 +26,13 @@ function load() {
 }
 
 function setWords() {
-	const word1 = words[Math.floor(Math.random() * words.length)];
-	document.getElementById('left-word').innerHTML = word1;
+	let word1 = words[Math.floor(Math.random() * words.length)];
 	const wordMatches = JSON.parse(localStorage.wordMatches || '{}');
 	wordMatches[word1] = wordMatches[word1] || [];
 	const numMatches = wordMatches[word1].length;
+	while (numMatches + 1 >= words.length) {
+		word1 = words[Math.floor(Math.random() * words.length)];
+	}
 	const word2Index = Math.floor(
 		Math.random() * (words.length - numMatches - 1)
 	);
@@ -43,9 +45,11 @@ function setWords() {
 			j++;
 		}
 	} while (j < word2Index);
-	document.getElementById('right-word').innerHTML = word2;
 	wordMatches[word1].push(word2);
 	localStorage.wordMatches = JSON.stringify(wordMatches);
+
+	document.getElementById('left-word').innerHTML = word1;
+	document.getElementById('right-word').innerHTML = word2;
 }
 
 function wordClick(el) {
