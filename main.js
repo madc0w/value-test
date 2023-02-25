@@ -88,7 +88,7 @@ function refreshResults(playerName) {
 	const results = getResults(playerName);
 	const userResults = getResults(localStorage.valuesPlayerName);
 	let html = '<table>';
-	html += '<tr><th>Word</th><th>Score</th></tr>';
+	html += '<tr class="table-header"><th>Word</th><th>Score</th></tr>';
 	const sortedWords = Object.keys(results).sort((a, b) => {
 		// console.log(a, b);
 		// console.log(a.wins, b.wins);
