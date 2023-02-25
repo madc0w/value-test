@@ -161,3 +161,7 @@ function reset() {
 		document.getElementById('player-score-correspondence').innerHTML = '';
 	}
 }
+
+function playerNameInput() {
+	// console.log(document.getElementById('player-name').value);
+}

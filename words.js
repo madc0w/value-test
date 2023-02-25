@@ -1,8 +1,7 @@
-// ONLY ADD WORDS AT THE END OF THIS LIST because indexing is static!
-
 const words = [
 	'adventure',
 	'altruism',
+	'ambition',
 	'artisticness',
 	'athleticism',
 	'austerity',
@@ -44,6 +43,7 @@ const words = [
 	'family',
 	'fashion sense',
 	'femininity',
+	'fighting spirit',
 	'fitness',
 	'food',
 	'freedom',

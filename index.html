@@ -92,7 +92,12 @@
 		<div id="body">
 			<div id="player-name-container">
 				Your name:
-				<input id="player-name" placeholder="Your name here" maxlength="40" />
+				<input
+					id="player-name"
+					placeholder="Your name here"
+					maxlength="40"
+					onkeyup="playerNameInput()"
+				/>
 				<div id="reset-button" onClick="reset()">Reset</div>
 				<hr />
 			</div>
