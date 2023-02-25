@@ -45,7 +45,7 @@ const words = [
 	'femininity',
 	'fighting spirit',
 	'fitness',
-	'food',
+	'gourmet food',
 	'freedom',
 	'friendship',
 	'frugality',
